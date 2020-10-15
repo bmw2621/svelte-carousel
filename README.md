@@ -1,16 +1,10 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
 
----
+# Image Carousel - Svelte
 
-# svelte app
-
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
-
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+Clone repo
 
 ```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
+git clone https://github.com/bmw2621/svelte-carousel
 ```
 
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*
@@ -21,85 +15,53 @@ cd svelte-app
 Install the dependencies...
 
 ```bash
-cd svelte-app
-npm install
+cd svelte-carousel
+yarn
 ```
 
 ...then start [Rollup](https://rollupjs.org):
 
 ```bash
-npm run dev
+yarn dev
 ```
 
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
+Navigate to [localhost:5000](http://localhost:5000). You should see your app running.
 
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
 
-If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
+## Carousel
+ Carousel will expand to the full width of the containing element
 
-## Building and running in production mode
+### Parameters
 
-To create an optimised version of the app:
+| parameter    |  default |                                                                                                                                                                    usage |
+|--------------|:--------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| images       | REQUIRED | Array of objects.  Each must have a path attribute, with a string representing the path the the image, and an id attribute for the image element represented as a string |
+| imageWidth   |    300   |                                                                                                                    Integer representing width of all images in carousel. |
+| imageSpacing |    20    |                                                                                                                Integer representing number of pixels between each image. |
+| speed        |    500   |                                                                                                      Integer representing number of milliseconds for transition to occur |
+| controlColor | '#444'   |                                                                                                    String representing hex value or HTML color to color default controls |
+| controlScale | '0.5'    |                                                                                                     String representation of float to determine size of default controls |
 
-```bash
-npm run build
+### Custom Controls - Slots
+Custom controls may be passed in to the respective slots `slot="left-control"` and `slot="right-control"`
+
+Example:
 ```
+import { ChevronLeftIcon, ChevronRightIcon } from 'svelte-feather-icons';
 
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
+<script>
+  const images = [
+    {path: 'images/image1.jpg', id: 'image1'},
+    {path: 'images/image2.jpg', id: 'image2'},
+    {path: 'images/image3.jpg', id: 'image3'},
+    {path: 'images/image4.jpg', id: 'image4'},
+    {path: 'images/image5.jpg', id: 'image5'}
+  ]
+</script>
 
+<Carousel {images}>
+  <span slot="left-control"><ChevronLeftIcon /></span>
+  <span slot="right-control"><ChevronRightIcon /></span>
+</Carousel>
 
-## Single-page app mode
-
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
-
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
-
-```js
-"start": "sirv public --single"
-```
-
-## Using TypeScript
-
-This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
-
-```bash
-node scripts/setupTypeScript.js
-```
-
-Or remove the script via:
-
-```bash
-rm scripts/setupTypeScript.js
-```
-
-## Deploying to the web
-
-### With [Vercel](https://vercel.com)
-
-Install `vercel` if you haven't already:
-
-```bash
-npm install -g vercel
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-vercel deploy --name my-project
-```
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
 ```
