@@ -27,6 +27,8 @@ yarn dev
 
 Navigate to [localhost:5000](http://localhost:5000). You should see your app running.
 
+> See tutorial at https://www.youtube.com/watch?v=Ikgw-ybpTtY
+
 
 ## Carousel
  Carousel will expand to the full width of the containing element
