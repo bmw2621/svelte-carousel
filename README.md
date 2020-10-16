@@ -35,14 +35,17 @@ Navigate to [localhost:5000](http://localhost:5000). You should see your app run
 
 ### Parameters
 
-| parameter    |  default |                                                                                                                                                                    usage |
-|--------------|:--------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| images       | REQUIRED | Array of objects.  Each must have a path attribute, with a string representing the path the the image, and an id attribute for the image element represented as a string |
-| imageWidth   |    300   |                                                                                                                    Integer representing width of all images in carousel. |
-| imageSpacing |    20    |                                                                                                                Integer representing number of pixels between each image. |
-| speed        |    500   |                                                                                                      Integer representing number of milliseconds for transition to occur |
-| controlColor | '#444'   |                                                                                                    String representing hex value or HTML color to color default controls |
-| controlScale | '0.5'    |                                                                                                     String representation of float to determine size of default controls |
+| parameter       |  default |                                                                                                                                                                    usage |
+|-----------------|:--------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| images          | REQUIRED | Array of objects.  Each must have a path attribute, with a string representing the path the the image, and an id attribute for the image element represented as a string |
+| imageWidth      |    300   |                                                                                                                    Integer representing width of all images in carousel. |
+| imageSpacing    |    20    |                                                                                                                Integer representing number of pixels between each image. |
+| speed           |    500   |                                                                                                      Integer representing number of milliseconds for transition to occur |
+| controlColor    |  '#444'  |                                                                                                    String representing hex value or HTML color to color default controls |
+| controlScale    |   '0.5'  |                                                                                                     String representation of float to determine size of default controls |
+| displayControls |   true   |                                                                                                                     Boolean representing if controls should be available |
+| autoplay        |   false  |                                                                                                                     Boolean representing if autoplay should be turned on |
+| autoplaySpeed   |   5000   |                                                                                                 Integer representing number of milliseconds between autoplay transitions |
 
 ### Custom Controls - Slots
 Custom controls may be passed in to the respective slots `slot="left-control"` and `slot="right-control"`

@@ -7,6 +7,10 @@
   export let speed = 500;
   export let controlColor= '#444';
   export let controlScale = '0.5';
+  export let autoplay = false;
+  export let autoplaySpeed = 5000;
+  export let displayControls = true;
+  let interval;
 
 
   const rotateLeft = e => {
@@ -22,6 +26,21 @@
     images = [...images.slice(1, images.length), images[0]]
     setTimeout(() => (document.getElementById(transitioningImage.id).style.opacity = 1), speed);
   }
+
+  const startAutoPlay = () => {
+    if(autoplay){
+      interval = setInterval(rotateLeft, autoplaySpeed)
+    }
+  }
+
+  const stopAutoPlay = () => {
+    clearInterval(interval)
+  }
+
+  if(autoplay){
+    startAutoPlay()
+  }
+
 </script>
 
 <div id="carousel-container">
@@ -32,9 +51,12 @@
         alt={image.id}
         id={image.id}
         style={`width:${imageWidth}px; margin: 0 ${imageSpacing}px;`}
+        on:mouseover={stopAutoPlay}
+        on:mouseout={startAutoPlay}
         animate:flip={{duration: speed}}/>
     {/each}
   </div>
+  {#if displayControls}
   <button id="left" on:click={rotateLeft}>
     <slot name="left-control">
       <svg width="39px" height="110px" id="svg8" transform={`scale(${controlScale})`}>
@@ -58,6 +80,8 @@
         </g>
       </svg>
     </slot>
+  </button>
+  {/if}
 </div>
 
 <style>

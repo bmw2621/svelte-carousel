@@ -10,6 +10,7 @@
 		{path: 'images/image5.jpg', id: 'image5'},
 		// {path: 'images/image6.jpg', id: 'image6'},
 	]
+
 </script>
 
 
@@ -18,7 +19,11 @@
 	imageWidth={250}
 	imageSpacing={15}
 	controlColor={'white'}
-	controlScale={0.8}/>
+	controlScale={0.8}
+	displayControls={false}
+	autoplay={true}
+	autoplaySpeed={3000}
+	/>
 
 <style>
 
