@@ -1,5 +1,6 @@
 <script>
   import { flip } from 'svelte/animate';
+  import { onDestroy } from 'svelte';
 
   export let images;
   export let imageWidth = 300;
@@ -40,6 +41,8 @@
   if(autoplay){
     startAutoPlay()
   }
+
+  onDestroy(()=>{stopAutoPlay()})
 
 </script>
 
