@@ -1,5 +1,6 @@
 <script>
   import { flip } from 'svelte/animate';
+  import { createEventDispatcher } from 'svelte';
 
   export let images;
   export let imageWidth = 300;
@@ -12,6 +13,7 @@
   export let displayControls = true;
   let interval;
 
+  const dispatch = createEventDispatcher()
 
   const rotateLeft = e => {
     const transitioningImage = images[images.length - 1]
@@ -53,6 +55,7 @@
         style={`width:${imageWidth}px; margin: 0 ${imageSpacing}px;`}
         on:mouseover={stopAutoPlay}
         on:mouseout={startAutoPlay}
+        on:click={() => dispatch('imageClicked',image.path)}
         animate:flip={{duration: speed}}/>
     {/each}
   </div>

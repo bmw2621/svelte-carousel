@@ -11,6 +11,9 @@
 		// {path: 'images/image6.jpg', id: 'image6'},
 	]
 
+	const handleImageClicked = e => {
+		console.log(e.detail)
+	}
 </script>
 
 
@@ -23,6 +26,7 @@
 	displayControls={false}
 	autoplay={true}
 	autoplaySpeed={3000}
+	on:imageClicked={handleImageClicked}
 	/>
 
 <style>
